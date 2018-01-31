@@ -1,0 +1,18 @@
+{
+  "name": "starrating.js",
+  "homepage": "https://github.com/vulcandigital/jquery-starrating",
+  "authors": [
+    "zanderwar <reece.alexander@gmail.com>"
+  ],
+  "description": "Adds a customisable star rating component",
+  "main": "jquery.starrating.js",
+  "keywords": [
+    "star",
+    "rating",
+    "jquery"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}
