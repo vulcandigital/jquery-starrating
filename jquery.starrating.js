@@ -4,6 +4,7 @@
             stars: 5,
             current: 0,
             callback: function (value) {
+                console.log(value);
             }
         }, options);
 
@@ -27,10 +28,21 @@
             $ul.append($clone);
         }
 
+        var _this = this;
+
         $ul.find('li').on('click', function () {
-            $ul.find('li.active').removeClass('active');
-            $(this).addClass('active');
+            if ($(this).hasClass('last')) {
+                $ul.find('li.active').removeClass('active last');
+                settings.callback(0);
+                return;
+            }
+            $ul.find('li.active').removeClass('active last');
+            $(this).addClass('active last');
             $(this).prevAll().addClass('active');
+
+            var selected = $ul.find('li.active').length;
+            $(settings.targetInput).val(selected);
+            settings.callback(selected);
         }).hover(function () {
             $ul.addClass('hover');
             $(this).addClass('hover');
@@ -40,10 +52,5 @@
             $(this).removeClass('hover');
             $(this).prevAll().removeClass('hover');
         });
-
-        var selected = $ul.find('li.active').length;
-
-        $(settings.targetInput).val(selected);
-        settings.callback(selected);
     };
 }(jQuery));
